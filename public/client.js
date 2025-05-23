@@ -57,7 +57,10 @@ function setup() {
   nickname = random(handles);
 
   if (is_iOS()) {
-    DeviceOrientationEvent.requestPermission();
+    btn = createButton("Motion");
+    btn.mousePressed(function() {
+      DeviceOrientationEvent.requestPermission();
+    });
   }
 }
 
