@@ -40,6 +40,18 @@ const handles = [
 ];
 let nickname;
 
+function is_iOS() {
+  return ['iPad Simulator', 'iPhone Simulator', 'iPod Simulator', 'iPad', 'iPhone', 'iPod'].includes(navigator.platform)
+    // iPad on iOS 13 detection
+    ||
+    (navigator.userAgent.includes("Mac") && "ontouchend" in document)
+}
+
+async function preload() {
+  if (is_iOS()) {
+    await window.DeviceMotionEvent.requestPermission();
+  }
+}
 // set up the sketch canvas and socket connection,
 // including callback function for when the socket receives data.
 function setup() {
