@@ -49,7 +49,7 @@ function is_iOS() {
 
 async function preload() {
   if (is_iOS()) {
-    await window.DeviceMotionEvent.requestPermission();
+    await DeviceMotionEvent.requestPermission();
   }
 }
 // set up the sketch canvas and socket connection,
