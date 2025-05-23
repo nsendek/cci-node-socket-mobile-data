@@ -47,11 +47,6 @@ function is_iOS() {
     (navigator.userAgent.includes("Mac") && "ontouchend" in document)
 }
 
-async function preload() {
-  if (is_iOS()) {
-    DeviceOrientationEvent.requestPermission();
-  }
-}
 // set up the sketch canvas and socket connection,
 // including callback function for when the socket receives data.
 function setup() {
@@ -60,6 +55,10 @@ function setup() {
   textAlign(CENTER, CENTER);
   fill(255);
   nickname = random(handles);
+
+  if (is_iOS()) {
+    DeviceOrientationEvent.requestPermission();
+  }
 }
 
 function draw() {
